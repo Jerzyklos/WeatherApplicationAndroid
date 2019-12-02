@@ -20,28 +20,30 @@ import java.nio.charset.Charset;
 
 import database.entities.WeatherData;
 
-public class GetDataFromURLRequest extends AsyncTask<String, Integer, WeatherData> {
+public class GetWeatherDataFromURLRequest extends AsyncTask<Void, Integer, WeatherData> {
 
     private WeakReference<Activity> activity;
-    private ProgressDialog progress_dialog;
+    //private ProgressDialog progress_dialog;
+    private String url;
 
-    public GetDataFromURLRequest(Activity activity){
+    public GetWeatherDataFromURLRequest(Activity activity, String station_id){
         this.activity = new WeakReference<>(activity);
+        this.url = "http://mech.fis.agh.edu.pl/meteo/rest/json/last/"+station_id;
     }
 
     @Override
     protected void onPreExecute(){
-        progress_dialog = new ProgressDialog(this.activity.get());
-        progress_dialog.setMessage("Loading...");
-        progress_dialog.show();
+//        progress_dialog = new ProgressDialog(this.activity.get());
+//        progress_dialog.setMessage("Loading...");
+//        progress_dialog.show();
     }
 
     @Override
-    protected WeatherData doInBackground(String... urls){
+    protected WeatherData doInBackground(Void... params){
         Log.d("Info", "Retrieving data...");
         String request_data="";
         try{
-            InputStream is = new URL(urls[0]).openStream();
+            InputStream is = new URL(url).openStream();
             BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
             String line="";
             while(line!=null){
@@ -84,7 +86,7 @@ public class GetDataFromURLRequest extends AsyncTask<String, Integer, WeatherDat
 
     @Override
     protected void onPostExecute(WeatherData weather_data) {
-        progress_dialog.dismiss();
+//        progress_dialog.dismiss();
         Log.d("info", "Data retrieved.");
     }
 }

@@ -22,4 +22,7 @@ public interface WeatherDataDao {
 
     @Query("SELECT * FROM weather_data WHERE station_id=:station_id")
     List<WeatherData> getGivenStationWeatherData(String station_id);
+
+    @Query("SELECT * FROM weather_data ORDER BY datetime(utc_time) AND station_id=:station_id")
+    List<WeatherData> getGivenStationLatestWeatherData(String station_id);
 }

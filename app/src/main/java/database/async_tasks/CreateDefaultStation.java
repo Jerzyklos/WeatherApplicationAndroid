@@ -29,6 +29,6 @@ public class CreateDefaultStation extends AsyncTask<Void, Void, String> {
 
     @Override
     protected void onPostExecute(String station_id){
-        Log.d("info", "Done");
+        Log.d("info", "Created default station");
     }
 }

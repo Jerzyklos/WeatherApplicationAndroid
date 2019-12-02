@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">AppOdZera</string>
-    <string name="button_info">Pokaż info</string>
+    <string name="button_info">Pokaż info pogodowe</string>
     <string name="benek">Benek</string>
     <string name="weather_data">pogoda boi</string>
     <string name="current_station">aktualnie \nwybrana stacja</string>
+    <string name="update_weather_data">Pobierz dane</string>
 </resources>
