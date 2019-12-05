@@ -2,7 +2,11 @@
     <string name="app_name">AppOdZera</string>
     <string name="button_info">Pokaż info pogodowe</string>
     <string name="benek">Benek</string>
-    <string name="weather_data">pogoda boi</string>
+    <string name="weather_data_utc_time">Czas utc</string>
+    <string name="weather_data_temp">Temperatura</string>
+    <string name="weather_data_dew_temp">Temp. punktu rosy</string>
+    <string name="weather_data_rain">Opady</string>
+    <string name="weather_data_wind">Wiatr</string>
     <string name="current_station">aktualnie \nwybrana stacja</string>
     <string name="update_weather_data">Pobierz dane</string>
 </resources>

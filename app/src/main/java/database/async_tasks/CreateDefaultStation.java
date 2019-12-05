@@ -10,7 +10,7 @@ import database.AppDatabase;
 import database.daos.StationDao;
 import database.entities.Station;
 
-public class CreateDefaultStation extends AsyncTask<Void, Void, String> {
+public class CreateDefaultStation extends AsyncTask<Void, Void, Station> {
 
     private WeakReference<Activity> activity;
 
@@ -19,16 +19,16 @@ public class CreateDefaultStation extends AsyncTask<Void, Void, String> {
     }
 
     @Override
-    protected String doInBackground(Void... params) {
+    protected Station doInBackground(Void... params) {
         StationDao station_Dao = AppDatabase.getInstance(this.activity.get()).getStationDao();
         Log.d("info", "creating default station...");
         Station station = new Station("s000", "WFiIS AGH", 19.9129, 50.0670, 220, true);
         station_Dao.insert(station);
-        return station.id;
+        return station;
     }
 
     @Override
-    protected void onPostExecute(String station_id){
+    protected void onPostExecute(Station station){
         Log.d("info", "Created default station");
     }
 }

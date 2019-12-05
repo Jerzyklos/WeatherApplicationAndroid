@@ -19,14 +19,14 @@ public class WeatherData {
     public String station_id;
     public double pressure;
     public double temperature;
-    public double dew_point_temperature;
-    public double humidity;
+    public double dew_point_temperature; //do jakiego w nocy minimalnie spada
+    public double humidity; // w procentach
     public double rainfall_intensity_in_last_hour;
     public double rainfall_intensity;
-    public double wind_direction;
-    public double wind_speed;
-    public double wind_speed_current;
-    public double meters_above_sea_level;
+    public double wind_direction; //od polnocy w prawo
+    public double wind_speed; //srednia
+    public double wind_speed_current; //porywy
+    public double meters_above_sea_level; //bez
 
     public WeatherData(String utc_time, String station_id, double pressure, double temperature,
                        double dew_point_temperature, double humidity, double rainfall_intensity_in_last_hour,

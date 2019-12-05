@@ -11,7 +11,7 @@ import database.daos.StationDao;
 import database.daos.WeatherDataDao;
 import database.entities.Station;
 
-public class GetDefaultStation extends AsyncTask<Void, Void, String> {
+public class GetDefaultStation extends AsyncTask<Void, Void, Station> {
 
     private WeakReference<Activity> activity;
 
@@ -20,16 +20,16 @@ public class GetDefaultStation extends AsyncTask<Void, Void, String> {
     }
 
     @Override
-    protected String doInBackground(Void... params) {
+    protected Station doInBackground(Void... params) {
         Log.d("info", "Getting default station..");
         StationDao station_Dao = AppDatabase.getInstance(this.activity.get()).getStationDao();
         Station station =  station_Dao.getDefaultStation();
         if(station==null) return null;
-        else return station.id;
+        else return station;
     }
 
     @Override
-    protected void onPostExecute(String station_id) {
+    protected void onPostExecute(Station station) {
         Log.d("info", "Done");
     }
 }

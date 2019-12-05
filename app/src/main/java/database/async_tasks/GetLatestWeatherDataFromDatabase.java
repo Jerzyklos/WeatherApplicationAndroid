@@ -8,9 +8,7 @@ import java.lang.ref.WeakReference;
 import java.util.List;
 
 import database.AppDatabase;
-import database.daos.StationDao;
 import database.daos.WeatherDataDao;
-import database.entities.Station;
 import database.entities.WeatherData;
 
 public class GetLatestWeatherDataFromDatabase extends AsyncTask<Void, Void, WeatherData> {
@@ -27,9 +25,13 @@ public class GetLatestWeatherDataFromDatabase extends AsyncTask<Void, Void, Weat
     protected WeatherData doInBackground(Void... params) {
         WeatherDataDao weather_data_Dao = AppDatabase.getInstance(this.activity.get()).getWeatherDataDao();
         Log.d("info", "Getting weather data from database...");
+        Log.d("info", "Getting weather data for "+station_id);
         List<WeatherData> weather_data = weather_data_Dao.getGivenStationLatestWeatherData(station_id);
-        if(weather_data.size()>=1){ Log.d("info", "zwracam dane");return weather_data.get(0);}
-        else{ Log.d("info", "nie zwracam danych");return null;}
+
+        for(WeatherData el : weather_data) Log.d("info", el.utc_time);
+
+        if(weather_data.size()>=1){ Log.d("info", "zwracam dane"); return weather_data.get(weather_data.size()-1);}
+        else{ Log.d("info", "nie zwracam danych"); return null;}
     }
 
     @Override
@@ -37,3 +39,5 @@ public class GetLatestWeatherDataFromDatabase extends AsyncTask<Void, Void, Weat
         Log.d("info", "Got weather data from database.");
     }
 }
+
+

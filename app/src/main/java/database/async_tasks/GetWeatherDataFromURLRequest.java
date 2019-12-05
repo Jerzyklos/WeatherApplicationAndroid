@@ -1,7 +1,6 @@
 package database.async_tasks;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -23,12 +22,13 @@ import database.entities.WeatherData;
 public class GetWeatherDataFromURLRequest extends AsyncTask<Void, Integer, WeatherData> {
 
     private WeakReference<Activity> activity;
-    //private ProgressDialog progress_dialog;
+//    private ProgressDialog progress_dialog;
     private String url;
 
     public GetWeatherDataFromURLRequest(Activity activity, String station_id){
         this.activity = new WeakReference<>(activity);
         this.url = "http://mech.fis.agh.edu.pl/meteo/rest/json/last/"+station_id;
+        Log.d("info", "pobieram!");
     }
 
     @Override

@@ -36,9 +36,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void updateText(String str){
-        TextView textView = findViewById(R.id.data);
-        if(textView==null) Log.d("error", "nie znaleziono");
-        textView.setText(str);
+        //TextView textView = findViewById(R.id.data);
+        //if(textView==null) Log.d("error", "nie znaleziono");
+        //textView.setText(str);
     }
 
     public void showInfo(View view){
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
 //                JSONArray array = new JSONArray(result);
 //                JSONObject whole_data = array.getJSONObject(0);
 //                String station_id = whole_data.getString("station");
-//                String time = whole_data.getString("utc");
+//                String time_update = whole_data.getString("utc");
 //
 //                JSONObject data = whole_data.getJSONObject("data");
 //
@@ -103,9 +103,9 @@ public class MainActivity extends AppCompatActivity {
 //                Double wind_sp_curr = Double.parseDouble(data.getString("ws"));
 //                Double meters_ab_sea = Double.parseDouble(data.getString("h0"));
 //                Log.d("temperature", temp.toString());
-//                Log.d("time", time);
+//                Log.d("time_update", time_update);
 //
-//                WeatherData weather_data = new WeatherData(time, station_id, pressure, temp, dew_temp,
+//                WeatherData weather_data = new WeatherData(time_update, station_id, pressure, temp, dew_temp,
 //                            hum, rain_last_hour, rain, wind_dir, wind_sp, wind_sp_curr, meters_ab_sea);
 //                new DatabaseManipulation(mainActivity, weather_data).execute();
 //            }
