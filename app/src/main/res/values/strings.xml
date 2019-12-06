@@ -8,5 +8,8 @@
     <string name="weather_data_rain">Opady</string>
     <string name="weather_data_wind">Wiatr</string>
     <string name="current_station">aktualnie \nwybrana stacja</string>
-    <string name="update_weather_data">Pobierz dane</string>
+    <string name="update_weather_data">Odśwież dane pogodowe</string>
+    <string name="update_stations">Odśwież stacje</string>
+    <string name="station_selection">Wybierz stację pomiarową:</string>
+    <string name="listview_el">Element listy</string>
 </resources>

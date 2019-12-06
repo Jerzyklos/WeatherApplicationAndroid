@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name="com.example.weatherapplicationandroid.TextViewForListView"></activity>
         <activity android:name=".ActivityWeatherInfo" />
         <activity android:name=".ActivityStationsInfo" />
         <activity android:name=".MainActivity">

@@ -5,14 +5,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/station_selection_info"
+        android:layout_height="130px"
+        android:layout_width="match_parent"
+        android:text="@string/station_selection"
+        android:textSize="80px"
+        android:textAlignment="center"
+        android:layout_alignParentTop="true"/>
+
+    <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/listview_of_stations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/station_selection_info"
+        android:layout_above="@id/update_stations"/>
+
     <Button
-        android:id="@+id/update_info"
+        android:id="@+id/update_stations"
         android:layout_width="match_parent"
         android:layout_height="150px"
         android:layout_alignParentBottom="true"
-        android:text="@string/update_weather_data"
+        android:text="@string/update_stations"
         android:onClick="DownloadStations"
-        android:drawableLeft="@drawable/update"
-        />
+        android:drawableLeft="@drawable/update" />
+
 
 </RelativeLayout>
