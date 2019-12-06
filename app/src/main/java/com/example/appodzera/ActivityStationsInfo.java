@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -29,26 +30,22 @@ public class ActivityStationsInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stations_info);
 
+        listview_of_stations = (ListView) findViewById(R.id.listview_of_stations);
+
         stations = GetStationsFromDatabase();
         if(stations==null){
-            //TODO create
+            //TODO coś zrobić jak jest nullem
         }
         else{
-            List<String> stations_names = new ArrayList<>();
-            for(Station st : stations){stations_names.add(st.name);}
-
-            listview_of_stations = (ListView) findViewById(R.id.listview_of_stations);
-            ListViewAdapter adapter = new ListViewAdapter(this, R.layout.activity_text_view_for_list_view, stations_names);
-            listview_of_stations.setAdapter(adapter);
+            UpdateStationsOnDisplay();
         }
     }
 
-    // TODO 1. przerzucic wszystki z listview do update'a
+    // TODO 1. przerzucic wszystko z listview do update'a
     // TODO 2. zrobić onClicka do listy
     // TODO 3. Zrobić podświetlenie defaultowej stacji(mozna ja przeslac w konstruktorze)
 
     public void DownloadStations(View view){
-        //TODO tu pobieranie
         List<Station> downloaded_stations = null;
         try {
             downloaded_stations = new GetStationsFromURLRequest(this).execute().get();
@@ -66,9 +63,26 @@ public class ActivityStationsInfo extends AppCompatActivity {
         List<String> stations_names = new ArrayList<>();
         for(Station st : stations){stations_names.add(st.name);}
 
-        listview_of_stations = (ListView) findViewById(R.id.listview_of_stations);
         ListViewAdapter adapter = new ListViewAdapter(this, R.layout.activity_text_view_for_list_view, stations_names);
         listview_of_stations.setAdapter(adapter);
+
+        listview_of_stations.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, final View view, int position, long id){
+                String item = (String) parent.getItemAtPosition(position);
+                view.animate().setDuration(2000).alpha(0)
+                        .withEndAction(new Runnable() {
+                            @Override
+                            public void run() {
+                                list.remove(item);
+                                adapter.notifyDataSetChanged();
+                                view.setAlpha(1);
+                            }
+                        });
+            }
+
+        });
+
     }
 
     public List<Station> GetStationsFromDatabase() {
@@ -86,10 +100,10 @@ public class ActivityStationsInfo extends AppCompatActivity {
         HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
 
         public ListViewAdapter(Context context, int textViewResourceId,
-                                  List<String> objects) {
-            super(context, textViewResourceId, objects);
-            for (int i = 0; i < objects.size(); ++i) {
-                mIdMap.put(objects.get(i), i);
+                                  List<String> names) {
+            super(context, textViewResourceId, names);
+            for (int i = 0; i < names.size(); ++i) {
+                mIdMap.put(names.get(i), i);
             }
         }
 
