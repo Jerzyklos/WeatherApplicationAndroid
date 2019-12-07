@@ -18,17 +18,20 @@ import java.util.concurrent.ExecutionException;
 import database.async_tasks.GetAllStations;
 import database.async_tasks.GetStationsFromURLRequest;
 import database.async_tasks.InsertStationsToDatabase;
+import database.async_tasks.SetStationAsDefault;
 import database.entities.Station;
 
 public class ActivityStationsInfo extends AppCompatActivity {
 
     List<Station> stations;
     ListView listview_of_stations;
+    ActivityStationsInfo activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stations_info);
+        activity = this;
 
         listview_of_stations = (ListView) findViewById(R.id.listview_of_stations);
 
@@ -60,25 +63,29 @@ public class ActivityStationsInfo extends AppCompatActivity {
     }
 
     void UpdateStationsOnDisplay(){
-        List<String> stations_names = new ArrayList<>();
+        final List<String> stations_names = new ArrayList<>();
         for(Station st : stations){stations_names.add(st.name);}
 
-        ListViewAdapter adapter = new ListViewAdapter(this, R.layout.activity_text_view_for_list_view, stations_names);
+        final ListViewAdapter adapter = new ListViewAdapter(this, R.layout.activity_text_view_for_list_view, stations_names);
         listview_of_stations.setAdapter(adapter);
 
         listview_of_stations.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id){
-                String item = (String) parent.getItemAtPosition(position);
-                view.animate().setDuration(2000).alpha(0)
-                        .withEndAction(new Runnable() {
-                            @Override
-                            public void run() {
-                                list.remove(item);
-                                adapter.notifyDataSetChanged();
-                                view.setAlpha(1);
-                            }
-                        });
+                //final String item = (String) parent.getItemAtPosition(position);
+                final String station_name = adapter.getItem(position);
+                Log.d("info", "kliknięto "+station_name);
+
+                Station new_default_station = null;
+                Station old_default_station = null;
+                for(Station st : stations){
+                    if(st.name==station_name) new_default_station = st;
+                    if(st.default_station==true) old_default_station = st;
+                }
+                new_default_station.default_station = true;
+                old_default_station.default_station = false;
+                new SetStationAsDefault(activity, new_default_station, old_default_station).execute();
+                activity.finish();
             }
 
         });

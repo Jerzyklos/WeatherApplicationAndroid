@@ -61,6 +61,7 @@ public class GetStationsFromURLRequest extends AsyncTask<Void, Integer, List<Sta
 
         List<Station> stations = new ArrayList<>();
         try {
+            // TODO przeniesć parsowanie jsona do innej klasy
             JSONArray array = new JSONArray(request_data);
             for(int i=0; i<array.length(); i++){
                 JSONObject data = array.getJSONObject(i);

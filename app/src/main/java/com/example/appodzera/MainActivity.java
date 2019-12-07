@@ -35,21 +35,23 @@ public class MainActivity extends AppCompatActivity {
         mainActivity=this;
     }
 
-    public void updateText(String str){
+    public void UpdateText(String str){
         //TextView textView = findViewById(R.id.data);
         //if(textView==null) Log.d("error", "nie znaleziono");
         //textView.setText(str);
     }
 
-    public void showInfo(View view){
+    //TODO zamiast pixeli w xml zrobić wagi`
+
+    public void ShowInfo(View view){
         startActivity(new Intent(this, ActivityWeatherInfo.class));
     }
 
-    public void showData(View view){
+    public void ShowData(View view){
 
     }
 
-    public void downloadData(View view){
+    public void DownloadData(View view){
         //new GetData().execute("http://mech.fis.agh.edu.pl/meteo/rest/json/last/s000");
     }
 

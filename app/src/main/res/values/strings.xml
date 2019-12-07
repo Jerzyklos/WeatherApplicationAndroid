@@ -1,15 +1,20 @@
 <resources>
-    <string name="app_name">AppOdZera</string>
-    <string name="button_info">Pokaż info pogodowe</string>
-    <string name="benek">Benek</string>
+    <string name="app_name">MChE Dane Pogodowe</string>
+    <string name="button_info">Aktualne\ndane pogodowe</string>
+    <string name="button_weather_charts">Wykresy pogodowe\nTrend pogodowy</string>
+    <string name="button_settings">Ustawienia</string>
+    <string name="button_application_info">O aplikacji</string>
     <string name="weather_data_utc_time">Czas utc</string>
     <string name="weather_data_temp">Temperatura</string>
     <string name="weather_data_dew_temp">Temp. punktu rosy</string>
-    <string name="weather_data_rain">Opady</string>
     <string name="weather_data_wind">Wiatr</string>
+    <string name="weather_data_wind_dir">Kierunek wiatru</string>
+    <string name="weather_data_pressure">Ciśnienie</string>
+    <string name="weather_data_humidity">Wilgotność</string>
+    <string name="weather_data_rain">Opady</string>
     <string name="current_station">aktualnie \nwybrana stacja</string>
     <string name="update_weather_data">Odśwież dane pogodowe</string>
     <string name="update_stations">Odśwież stacje</string>
-    <string name="station_selection">Wybierz stację pomiarową:</string>
+    <string name="station_selection">Wybierz domyślną stację pomiarową:</string>
     <string name="listview_el">Element listy</string>
 </resources>
