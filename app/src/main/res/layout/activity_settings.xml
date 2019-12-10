@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/button_delete_db_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:text="@string/button_delete_db_content"
+        android:onClick="DeleteDatabaseContent"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        />
+    <TextView
+            android:id="@+id/checkboxes_description"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="@string/checkboxes_description"
+            android:textAlignment="center"
+            android:layout_marginLeft="10dp"
+        android:gravity="center_vertical"
+            android:textSize="20dp"
+            android:layout_weight="1"/>
+    <CheckBox
+        android:id="@+id/checkbox_local_time"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="@string/checkbox_local_time"
+        android:buttonTint="@color/design_default_color_primary"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1"
+        />
+
+    <CheckBox
+        android:id="@+id/checkbox_utc_time"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="@string/checkbox_utc_time"
+        android:buttonTint="@color/design_default_color_primary"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1"/>
+
+    <CheckBox
+        android:id="@+id/checkbox_pressure"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="@string/checkbox_pressure"
+        android:buttonTint="@color/design_default_color_primary"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1"/>
+
+    <CheckBox
+        android:id="@+id/checkbox_temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="@string/checkbox_temperature"
+        android:buttonTint="@color/design_default_color_primary"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1"/>
+
+    <CheckBox
+        android:id="@+id/checkbox_temperature_dew_point"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="@string/checkbox_dew_point_temperature"
+        android:buttonTint="@color/design_default_color_primary"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1"/>
+
+    <CheckBox
+        android:id="@+id/checkbox_humidity"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="@string/checkbox_humidity"
+        android:buttonTint="@color/design_default_color_primary"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1"/>
+
+    <CheckBox
+        android:id="@+id/checkbox_rainfall_intensity_in_last_hour"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="@string/checkbox_rainfall_intensity_in_last_hour"
+        android:buttonTint="@color/design_default_color_primary"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1"/>
+
+    <CheckBox
+        android:id="@+id/checkbox_rainfall_intensity"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="@string/checkbox_rainfall_intensity"
+        android:buttonTint="@color/design_default_color_primary"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1"/>
+
+    <CheckBox
+        android:id="@+id/checkbox_wind_direction"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="@string/checkbox_wind_direction"
+        android:buttonTint="@color/design_default_color_primary"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1"/>
+
+    <CheckBox
+        android:id="@+id/checkbox_wind_speed"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="@string/checkbox_wind_speed"
+        android:buttonTint="@color/design_default_color_primary"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1"/>
+
+    <CheckBox
+        android:id="@+id/checkbox_wind_speed_current"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="@string/checkbox_wind_speed_current"
+        android:buttonTint="@color/design_default_color_primary"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1"/>
+
+    <Button
+        android:id="@+id/button_for_checkboxes"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:text="@string/button_for_checkboxes"
+        android:onClick="SetWeatherDataDisplayPreferences"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        />
+
+</LinearLayout>

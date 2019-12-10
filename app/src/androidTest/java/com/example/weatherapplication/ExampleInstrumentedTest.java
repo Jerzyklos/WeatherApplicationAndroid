@@ -1,4 +1,4 @@
-package com.example.appodzera;
+package com.example.weatherapplication;
 
 import android.content.Context;
 import androidx.test.InstrumentationRegistry;

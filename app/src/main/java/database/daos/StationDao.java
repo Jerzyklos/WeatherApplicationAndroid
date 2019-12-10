@@ -22,12 +22,15 @@ public interface StationDao {
     @Delete
     void delete(Station... station);
 
+    @Query("DELETE FROM stations")
+    void DeleteAllStations();
+
     @Query("SELECT * FROM stations")
     List<Station> getAllStations();
 
     @Query("SELECT * FROM stations WHERE id=:id")
     Station getGivenStation(String id);
 
-    @Query("SELECT * FROM stations WHERE default_station= 1")
+    @Query("SELECT * FROM stations WHERE is_default_station= 1")
     Station getDefaultStation();
 }

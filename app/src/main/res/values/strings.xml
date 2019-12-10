@@ -4,7 +4,7 @@
     <string name="button_weather_charts">Wykresy pogodowe\nTrend pogodowy</string>
     <string name="button_settings">Ustawienia</string>
     <string name="button_application_info">O aplikacji</string>
-    <string name="weather_data_utc_time">Czas utc</string>
+    <string name="weather_data_utc_time">Data i godzina</string>
     <string name="weather_data_temp">Temperatura</string>
     <string name="weather_data_dew_temp">Temp. punktu rosy</string>
     <string name="weather_data_wind">Wiatr</string>
@@ -17,4 +17,18 @@
     <string name="update_stations">Odśwież stacje</string>
     <string name="station_selection">Wybierz domyślną stację pomiarową:</string>
     <string name="listview_el">Element listy</string>
+    <string name="button_delete_db_content">Usuń zawartość bazy danych\n(dane pogodowe i stacje)</string>
+    <string name="checkboxes_description">Wybierz wyświetlane dane pogodowe:</string>
+    <string name="checkbox_local_time">Czas lokalny</string>
+    <string name="checkbox_utc_time">Czas UTC</string>
+    <string name="checkbox_pressure">Ciśnienie</string>
+    <string name="checkbox_temperature">Temperatura</string>
+    <string name="checkbox_dew_point_temperature">Temperatura punktu rosy</string>
+    <string name="checkbox_humidity">Wilgotność</string>
+    <string name="checkbox_rainfall_intensity_in_last_hour">Opad w ostatniej godzinie</string>
+    <string name="checkbox_rainfall_intensity">Opad</string>
+    <string name="checkbox_wind_direction">Kierunek wiatru</string>
+    <string name="checkbox_wind_speed">Prędkość wiatru</string>
+    <string name="checkbox_wind_speed_current">Prędkość wiatru(porywy)</string>
+    <string name="button_for_checkboxes">Gotowe</string>
 </resources>

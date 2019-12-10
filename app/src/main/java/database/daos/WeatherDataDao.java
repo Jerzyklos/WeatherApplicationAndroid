@@ -21,12 +21,15 @@ public interface WeatherDataDao {
     @Delete
     void delete(WeatherData... data);
 
+    @Query("DELETE FROM weather_data")
+    void DeleteAllWeatherData();
+
     @Query("SELECT * FROM weather_data WHERE station_id=:station_id")
     List<WeatherData> getGivenStationWeatherData(String station_id);
 
     @Query("SELECT * FROM weather_data")
     List<WeatherData> getAll();
 
-    @Query("SELECT * FROM weather_data ORDER BY datetime(utc_time) AND station_id=:station_id")
+    @Query("SELECT * FROM weather_data WHERE station_id=:station_id")
     List<WeatherData> getGivenStationLatestWeatherData(String station_id);
 }

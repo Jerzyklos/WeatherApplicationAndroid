@@ -26,7 +26,8 @@ public class SetStationAsDefault extends AsyncTask<Void, Void, Integer> {
     protected Integer doInBackground(Void... params) {
         StationDao station_Dao = AppDatabase.getInstance(this.activity.get()).getStationDao();
         Log.d("info", "Setting station as a default station...");
-        station_Dao.update(old_default_station, new_default_station);
+        if(old_default_station==null) station_Dao.update(new_default_station);
+        else station_Dao.update(old_default_station, new_default_station);
         return 1;
     }
 

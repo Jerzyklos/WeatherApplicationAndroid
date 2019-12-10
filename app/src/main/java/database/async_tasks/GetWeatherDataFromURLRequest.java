@@ -1,6 +1,7 @@
 package database.async_tasks;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -22,7 +23,7 @@ import database.entities.WeatherData;
 public class GetWeatherDataFromURLRequest extends AsyncTask<Void, Integer, WeatherData> {
 
     private WeakReference<Activity> activity;
-//    private ProgressDialog progress_dialog;
+    //public ProgressDialog progress_dialog;
     private String url;
 
     public GetWeatherDataFromURLRequest(Activity activity, String station_id){
@@ -62,7 +63,8 @@ public class GetWeatherDataFromURLRequest extends AsyncTask<Void, Integer, Weath
             JSONArray array = new JSONArray(request_data);
             JSONObject whole_data = array.getJSONObject(0);
             String station_id = whole_data.getString("station");
-            String time = whole_data.getString("utc");
+            String utc_time = whole_data.getString("utc");
+            String local_time = whole_data.getString("time");
 
             JSONObject json_data = whole_data.getJSONObject("data");
             // value -999.0 means that data is null
@@ -87,7 +89,7 @@ public class GetWeatherDataFromURLRequest extends AsyncTask<Void, Integer, Weath
             Double meters_ab_sea = -999.0;
             if(json_data.getString("h0")!="null") meters_ab_sea = Double.parseDouble(json_data.getString("h0"));
 
-            weather_data = new WeatherData(time, station_id, pressure, temp, dew_temp,
+            weather_data = new WeatherData(utc_time, station_id, local_time, pressure, temp, dew_temp,
                     hum, rain_last_hour, rain, wind_dir, wind_sp, wind_sp_curr, meters_ab_sea);
         }
         catch (JSONException e){Log.d("error","Caught JSON exception");}
@@ -97,7 +99,6 @@ public class GetWeatherDataFromURLRequest extends AsyncTask<Void, Integer, Weath
 
     @Override
     protected void onPostExecute(WeatherData weather_data) {
-//        progress_dialog.dismiss();
         Log.d("info", "Data retrieved.");
     }
 }

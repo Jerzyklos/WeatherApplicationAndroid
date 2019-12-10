@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -12,7 +10,7 @@
         android:layout_alignParentTop="true"
         android:drawableLeft="@drawable/station_selection_image"
         android:text="@string/current_station"
-        android:textSize="50px"
+        android:textSize="40px"
         android:onClick="ShowStations"/>
 
     <TableLayout
@@ -31,11 +29,12 @@
             <TextView
                 android:id="@+id/weather_data_utc_time"
                 android:layout_width="match_parent"
-                android:layout_height="130px"
+                android:layout_height="120px"
                 android:layout_column="1"
                 android:text="@string/weather_data_utc_time"
                 android:textAlignment="center"
-                android:textSize="80px" />
+                android:gravity="center_vertical"
+                android:textSize="50px" />
         </TableRow>
         <TableRow
             android:layout_width="match_parent"

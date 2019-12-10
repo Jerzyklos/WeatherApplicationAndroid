@@ -12,7 +12,7 @@
         android:drawableLeft="@drawable/cloudy_big"
         android:text="@string/button_info"
         android:textSize="20dp"
-        android:onClick="ShowInfo"
+        android:onClick="ShowWeatherData"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"/>
@@ -25,7 +25,7 @@
         android:drawableLeft="@drawable/chart"
         android:text="@string/button_weather_charts"
         android:textSize="20dp"
-        android:onClick="ShowInfo"
+        android:onClick="ShowWeatherChart"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"/>
@@ -38,7 +38,7 @@
         android:drawableLeft="@drawable/settings"
         android:text="@string/button_settings"
         android:textSize="20dp"
-        android:onClick="ShowInfo"
+        android:onClick="ShowSettings"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"/>
@@ -51,7 +51,7 @@
         android:drawableLeft="@drawable/help"
         android:text="@string/button_application_info"
         android:textSize="20dp"
-        android:onClick="ShowInfo"
+        android:onClick="ShowApplicationInfo"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"

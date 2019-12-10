@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.appodzera">
+    package="com.example.weatherapplication">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -11,10 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.weatherapplicationandroid.TextViewForListView"></activity>
-        <activity android:name=".ActivityWeatherInfo" />
+        <activity android:name="com.example.weatherapplicationandroid.chart"></activity>
+        <activity android:name=".ActivityWeatherChart" />
+        <activity android:name=".ActivityApplicationInfo" />
+        <activity android:name=".ActivitySettings" />
+        <activity android:name=".ActivityWeatherData" />
         <activity android:name=".ActivityStationsInfo" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".ActivityMain">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

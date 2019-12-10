@@ -22,7 +22,7 @@ public class CreateDefaultStation extends AsyncTask<Void, Void, Station> {
     protected Station doInBackground(Void... params) {
         StationDao station_Dao = AppDatabase.getInstance(this.activity.get()).getStationDao();
         Log.d("info", "creating default station...");
-        Station station = new Station("s000", "WFiIS AGH", 19.9129, 50.0670, 220, true);
+        Station station = new Station("s000", "WFiIS AGH", 19.9129, 50.0670, 220, false);
         station_Dao.insert(station);
         return station;
     }
