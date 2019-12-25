@@ -1,4 +1,4 @@
-package com.example.weatherapplicationandroid;
+package com.example.weatherapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,6 +19,12 @@ public class BarChartActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d("info", "jestem");
+
+        double array[];
+        Bundle bundle = getIntent().getExtras();
+        if(bundle!=null){
+            array=bundle.getDoubleArray("data");
+        }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chart);

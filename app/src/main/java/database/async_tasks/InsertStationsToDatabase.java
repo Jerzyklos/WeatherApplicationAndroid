@@ -9,9 +9,7 @@ import java.util.List;
 
 import database.AppDatabase;
 import database.daos.StationDao;
-import database.daos.WeatherDataDao;
 import database.entities.Station;
-import database.entities.WeatherData;
 
 
 public class InsertStationsToDatabase extends AsyncTask<Void, Void, Integer> {

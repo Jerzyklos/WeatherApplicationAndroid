@@ -95,17 +95,6 @@ public class ActivityStationsInfo extends AppCompatActivity {
                 });
             }
         }).start();
-//        List<Station> downloaded_stations = null;
-//        try {
-//            downloaded_stations = new GetStationsFromURLRequest(this).execute().get();
-//        }
-//        catch(ExecutionException e){Log.d("info", "Execution exception");}
-//        catch(InterruptedException e){Log.d("info", "Interrupted exception");}
-//
-//        new InsertStationsToDatabase(this, downloaded_stations).execute();
-//        stations = downloaded_stations;
-//
-//        UpdateStationsOnDisplay();
     }
 
     void UpdateStationsOnDisplay(){

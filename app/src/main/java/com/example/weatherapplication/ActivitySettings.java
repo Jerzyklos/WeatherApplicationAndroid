@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 import database.async_tasks.DeleteAllStationsAndWeatherData;
 import database.async_tasks.DeleteWeatherDataDisplayPreferences;
@@ -22,9 +23,7 @@ public class ActivitySettings extends AppCompatActivity {
 
     public void DeleteDatabaseContent(View view){
         new DeleteAllStationsAndWeatherData(this).execute();
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Usunięto dane.");
-        builder.show();
+        Toast.makeText(this.getApplicationContext(), "Usunięto dane.", Toast.LENGTH_SHORT).show();
     }
 
     public void SetWeatherDataDisplayPreferences(View view){
@@ -71,8 +70,6 @@ public class ActivitySettings extends AppCompatActivity {
                 dew_point_temperature, humidity, rainfall_intensity_in_last_hour, rainfall_intensity, wind_direction, wind_speed, wind_speed_current);
 
         new InsertWeatherDataDisplayPreferences(this, preferences).execute();
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Zapamiętano.");
-        builder.show();
+        Toast.makeText(this.getApplicationContext(), "Zapamiętano.", Toast.LENGTH_SHORT).show();
     }
 }

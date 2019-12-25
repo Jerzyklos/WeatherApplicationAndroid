@@ -4,10 +4,10 @@
     <string name="button_weather_charts">Wykresy pogodowe\nTrend pogodowy</string>
     <string name="button_settings">Ustawienia</string>
     <string name="button_application_info">O aplikacji</string>
-    <string name="weather_data_utc_time">Data i godzina</string>
+    <string name="weather_data_time">Data i godzina</string>
     <string name="weather_data_temp">Temperatura</string>
     <string name="weather_data_dew_temp">Temp. punktu rosy</string>
-    <string name="weather_data_wind">Wiatr</string>
+    <string name="weather_data_wind">Prędkość wiatru</string>
     <string name="weather_data_wind_dir">Kierunek wiatru</string>
     <string name="weather_data_pressure">Ciśnienie</string>
     <string name="weather_data_humidity">Wilgotność</string>
@@ -31,4 +31,11 @@
     <string name="checkbox_wind_speed">Prędkość wiatru</string>
     <string name="checkbox_wind_speed_current">Prędkość wiatru(porywy)</string>
     <string name="button_for_checkboxes">Gotowe</string>
+    <string name="chart_preparation_info">Przygotowywanie wykresu</string>
+    <string name="textview_char_preparation_parameter">Co chcesz wyświetlić?</string>
+    <string name="button_draw_chart">Pobierz dane i wyświetl wykres</string>
+    <string name="textview_char_preparation_date">W który dzień?</string>
+    <string name="checkbox_date_today">Dzisiaj</string>
+    <string name="checkbox_date_choose">Wybierz datę</string>
+    <string name="textview_char_preparation_date_info">Podaj datę w formacie RRRR-MM-DD\n(np.2019-12-30)</string>
 </resources>
