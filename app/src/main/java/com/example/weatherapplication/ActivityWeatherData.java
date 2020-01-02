@@ -41,7 +41,7 @@ public class ActivityWeatherData extends AppCompatActivity {
         UpdateDefaultStationOnDisplay();
 
         progress_dialog= new ProgressDialog(this);
-        progress_dialog.setMessage("Pobieram dane...");
+        progress_dialog.setMessage("Pobieram dane. To może chwilę potrwać...");
         progress_dialog.setCancelable(false);
 
         activity = this;

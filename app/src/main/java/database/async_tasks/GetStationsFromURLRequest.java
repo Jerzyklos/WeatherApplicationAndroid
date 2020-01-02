@@ -35,11 +35,7 @@ public class GetStationsFromURLRequest extends AsyncTask<Void, Integer, List<Sta
     }
 
     @Override
-    protected void onPreExecute(){
-//        progress_dialog = new ProgressDialog(this.activity.get());
-//        progress_dialog.setMessage("Loading...");
-//        progress_dialog.show();
-    }
+    protected void onPreExecute(){}
 
     @Override
     protected List<Station> doInBackground(Void... params){
@@ -80,7 +76,6 @@ public class GetStationsFromURLRequest extends AsyncTask<Void, Integer, List<Sta
 
     @Override
     protected void onPostExecute(List<Station> stations) {
-//        progress_dialog.dismiss();
         Log.d("info", "stations retrieved.");
     }
 }

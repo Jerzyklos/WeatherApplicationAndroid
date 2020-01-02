@@ -16,25 +16,36 @@ import java.lang.ref.WeakReference;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.List;
 
-import database.entities.WeatherData;
-
-public class GetWeatherDataForChartFromURLRequest extends AsyncTask<Void, Integer, WeatherData> {
+public class GetWeatherDataForChartFromURLRequest extends AsyncTask<Void, Integer, List<Double>> {
 
     private WeakReference<Activity> activity;
     private String url;
+    private String param;
 
     public GetWeatherDataForChartFromURLRequest(Activity activity, String station_id, String weather_parameter, String date){
         this.activity = new WeakReference<>(activity);
         this.url = "http://mech.fis.agh.edu.pl/meteo/rest/json/"+weather_parameter+"/"+station_id+"/"+date+"/"+date;
         Log.d("info", "pobieram!");
+        param = null;
+        if(weather_parameter=="temp") param="ta";
+        if(weather_parameter=="temp0") param="t0";
+        if(weather_parameter=="pres0") param="p0";
+        if(weather_parameter=="humi") param="ha";
+        if(weather_parameter=="rain1") param="r1";
+        if(weather_parameter=="rain") param="ra";
+        if(weather_parameter=="windd") param="wd";
+        if(weather_parameter=="winds") param="ws";
+        if(weather_parameter=="windg") param="wg";
     }
 
     @Override
     protected void onPreExecute(){}
 
     @Override
-    protected WeatherData doInBackground(Void... params){
+    protected List<Double> doInBackground(Void... params){
         Log.d("Info", "Retrieving data...");
         String request_data="";
         try{
@@ -51,48 +62,26 @@ public class GetWeatherDataForChartFromURLRequest extends AsyncTask<Void, Intege
 
         Log.d("info", request_data);
 
-        WeatherData weather_data = null;
-        try {
-            // TODO przeniesć parsowanie jsona do innej klasy
-            JSONArray array = new JSONArray(request_data);
-            JSONObject whole_data = array.getJSONObject(0);
-            String station_id = whole_data.getString("station");
-            String utc_time = whole_data.getString("utc");
-            String local_time = whole_data.getString("time");
-
-            JSONObject json_data = whole_data.getJSONObject("data");
-            // value -999.0 means that data is null
-            Double temp = -999.0;
-            if(json_data.getString("ta")!="null") temp = Double.parseDouble(json_data.getString("ta"));
-            Double pressure = -999.0;
-            if(json_data.getString("p0")!="null") pressure = Double.parseDouble(json_data.getString("p0"));
-            Double dew_temp = -999.0;
-            if(json_data.getString("t0")!="null") dew_temp = Double.parseDouble(json_data.getString("t0"));
-            Double hum = -999.0;
-            if(json_data.getString("ha")!="null") hum = Double.parseDouble(json_data.getString("ha"));
-            Double rain_last_hour = -999.0;
-            if(json_data.getString("r1")!="null") rain_last_hour = Double.parseDouble(json_data.getString("r1"));
-            Double rain = -999.0;
-            if(json_data.getString("ra")!="null") rain = Double.parseDouble(json_data.getString("ra"));
-            Double wind_dir = -999.0;
-            if(json_data.getString("wd")!="null") wind_dir = Double.parseDouble(json_data.getString("wd"));
-            Double wind_sp = -999.0;
-            if(json_data.getString("wg")!="null") wind_sp = Double.parseDouble(json_data.getString("wg"));
-            Double wind_sp_curr = -999.0;
-            if(json_data.getString("ws")!="null") wind_sp_curr = Double.parseDouble(json_data.getString("ws"));
-            Double meters_ab_sea = -999.0;
-            if(json_data.getString("h0")!="null") meters_ab_sea = Double.parseDouble(json_data.getString("h0"));
-
-            weather_data = new WeatherData(utc_time, station_id, local_time, pressure, temp, dew_temp,
-                    hum, rain_last_hour, rain, wind_dir, wind_sp, wind_sp_curr, meters_ab_sea);
+        List<Double> list = null;
+        //when data set is not empty
+        if(request_data!="[]") {
+            try {
+                // TODO przeniesć parsowanie jsona do innej klasy
+                list = new ArrayList<>();
+                JSONArray array = new JSONArray(request_data);
+                for (int i = 0; i < array.length(); i++){
+                    list.add(array.getJSONObject(i).getJSONObject("data").getDouble(param));
+                }
+            } catch (JSONException e){ Log.d("error", "Caught JSON exception");}
         }
-        catch (JSONException e){Log.d("error","Caught JSON exception");}
-
-        return weather_data;
+        return list;
     }
 
     @Override
-    protected void onPostExecute(WeatherData weather_data) {
+    protected void onPostExecute(List<Double> list) {
         Log.d("info", "Data retrieved.");
+        for(Double el : list){
+            Log.d("value", Double.toString(el));
+        }
     }
 }

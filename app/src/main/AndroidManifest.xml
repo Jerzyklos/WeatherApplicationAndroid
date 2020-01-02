@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ActivityPrepareChart"></activity>
         <activity android:name="com.example.weatherapplicationandroid.chart" />
-        <activity android:name=".ActivityWeatherChart" />
+        <activity android:name=".WeatherChartActivity" />
         <activity android:name=".ActivityApplicationInfo" />
         <activity android:name=".ActivitySettings" />
         <activity android:name=".ActivityWeatherData" />
