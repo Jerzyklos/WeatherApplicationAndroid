@@ -30,8 +30,8 @@ public class GetLatestWeatherDataFromDatabase extends AsyncTask<Void, Void, Weat
 
         for(WeatherData el : weather_data) Log.d("info", el.utc_time);
 
-        if(weather_data.size()>=1){ Log.d("info", "zwracam dane"); return weather_data.get(weather_data.size()-1);}
-        else{ Log.d("info", "nie zwracam danych"); return null;}
+        if(weather_data.size()>=1){return weather_data.get(weather_data.size()-1);}
+        else{return null;}
     }
 
     @Override

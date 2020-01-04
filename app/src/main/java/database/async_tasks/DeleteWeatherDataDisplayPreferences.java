@@ -7,8 +7,6 @@ import android.util.Log;
 import java.lang.ref.WeakReference;
 
 import database.AppDatabase;
-import database.daos.StationDao;
-import database.daos.WeatherDataDao;
 import database.daos.WeatherDataDisplayPreferencesDao;
 
 public class DeleteWeatherDataDisplayPreferences extends AsyncTask<Void, Void, Integer> {

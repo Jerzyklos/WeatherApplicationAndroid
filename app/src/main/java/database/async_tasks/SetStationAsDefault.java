@@ -13,8 +13,8 @@ import database.entities.Station;
 public class SetStationAsDefault extends AsyncTask<Void, Void, Integer> {
 
     private WeakReference<Activity> activity;
-    Station new_default_station;
-    Station old_default_station;
+    private Station new_default_station;
+    private Station old_default_station;
 
     public SetStationAsDefault(Activity activity, Station new_default_station, Station old_default_station){
         this.activity = new WeakReference<>(activity);

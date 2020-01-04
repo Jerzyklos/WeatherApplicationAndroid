@@ -7,16 +7,13 @@ import android.util.Log;
 import java.lang.ref.WeakReference;
 
 import database.AppDatabase;
-import database.daos.StationDao;
 import database.daos.WeatherDataDao;
-import database.entities.Station;
 import database.entities.WeatherData;
-
 
 public class InsertWeatherDataToDatabase extends AsyncTask<Void, Void, Integer> {
 
     private WeakReference<Activity> activity;
-    WeatherData weather_data;
+    private WeatherData weather_data;
 
     public InsertWeatherDataToDatabase(Activity activity, WeatherData weather_data){
         this.activity = new WeakReference<>(activity);

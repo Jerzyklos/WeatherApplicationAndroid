@@ -23,12 +23,11 @@ public class GetWeatherDataDisplayPreferences extends AsyncTask<Void, Void, Weat
         Log.d("info", "Getting default preferences..");
         WeatherDataDisplayPreferencesDao preferences_Dao = AppDatabase.getInstance(this.activity.get()).getWeatherDataDisplayPreferencesDao();
         WeatherDataDisplayPreferences preferences =  preferences_Dao.getWeatherDataDisplayPreferences();
-        if(preferences==null)Log.d("info", "preferencje sa nullem");
         return preferences;
     }
 
     @Override
     protected void onPostExecute(WeatherDataDisplayPreferences preferences) {
-        Log.d("info", "Done");
+        Log.d("info", "Got default preferences");
     }
 }

@@ -15,7 +15,7 @@ import database.entities.Station;
 public class InsertStationsToDatabase extends AsyncTask<Void, Void, Integer> {
 
     private WeakReference<Activity> activity;
-    List<Station> stations;
+    private List<Station> stations;
 
     public InsertStationsToDatabase(Activity activity, List<Station> stations){
         this.activity = new WeakReference<>(activity);
