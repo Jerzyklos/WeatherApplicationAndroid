@@ -21,11 +21,9 @@ public class GetDefaultStation extends AsyncTask<Void, Void, Station> {
 
     @Override
     protected Station doInBackground(Void... params) {
-        Log.d("info", "Getting default station..");
-        StationDao station_Dao = AppDatabase.getInstance(this.activity.get()).getStationDao();
+        StationDao station_Dao = AppDatabase.getInstance(activity.get()).getStationDao();
         Station station =  station_Dao.getDefaultStation();
-        if(station==null) return null;
-        else return station;
+        return station;
     }
 
     @Override

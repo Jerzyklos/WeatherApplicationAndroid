@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.weatherapplication.DataFromURLParser;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,15 +25,10 @@ import database.entities.Station;
 import database.entities.WeatherData;
 
 public class GetStationsFromURLRequest extends AsyncTask<Void, Integer, List<Station>> {
-
-    private WeakReference<Activity> activity;
-    //    private ProgressDialog progress_dialog;
     private String url;
 
-    public GetStationsFromURLRequest(Activity activity){
-        this.activity = new WeakReference<>(activity);
+    public GetStationsFromURLRequest(){
         this.url = "http://mech.fis.agh.edu.pl/meteo/rest/json/info/";
-        Log.d("info", "pobieram!");
     }
 
     @Override
@@ -39,38 +36,24 @@ public class GetStationsFromURLRequest extends AsyncTask<Void, Integer, List<Sta
 
     @Override
     protected List<Station> doInBackground(Void... params){
-        Log.d("Info", "Retrieving stations...");
-        String request_data="";
+        Log.d("Info", "Retrieving stations data...");
+
+        StringBuilder request_builder = new StringBuilder();
         try{
             InputStream is = new URL(url).openStream();
             BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
             String line="";
             while(line!=null){
                 line = rd.readLine();
-                request_data += line + "\n";
+                request_builder.append(line);
             }
         }
         catch(MalformedURLException e){Log.d("error", "Malformed URL Exception occured.");}
         catch(IOException e){Log.d("error", "IOException occured.");}
 
-        Log.d("info", request_data);
-
-        List<Station> stations = new ArrayList<>();
-        try {
-            // TODO przeniesć parsowanie jsona do innej klasy
-            JSONArray array = new JSONArray(request_data);
-            for(int i=0; i<array.length(); i++){
-                JSONObject data = array.getJSONObject(i);
-                String station_id = data.getString("station");
-                String name = data.getString("name");
-                Double longitude = Double.parseDouble(data.getString("long"));
-                Double latitude = Double.parseDouble(data.getString("lati"));
-                Double altitude = Double.parseDouble(data.getString("alti"));
-                stations.add(new Station(station_id, name, longitude, latitude, altitude, false));
-            }
-        }
-        catch (JSONException e){Log.d("error","Caught JSON exception");}
-        //TODO zlecic parsowanie jsonów(tu i w weather data) innej klasie
+        String request_data=request_builder.toString();
+        DataFromURLParser parser = new DataFromURLParser();
+        List<Station> stations = parser.ParseJSONForStationsData(request_data);
         return stations;
     }
 

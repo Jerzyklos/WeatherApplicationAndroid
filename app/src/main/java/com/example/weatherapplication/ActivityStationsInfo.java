@@ -75,7 +75,7 @@ public class ActivityStationsInfo extends AppCompatActivity {
             {
                 List<Station> downloaded_stations = null;
                 try {
-                    downloaded_stations = new GetStationsFromURLRequest(activity).execute().get();
+                    downloaded_stations = new GetStationsFromURLRequest().execute().get();
                 } catch (ExecutionException e) {
                     Log.d("info", "Execution exception");
                 } catch (InterruptedException e) {
@@ -114,12 +114,10 @@ public class ActivityStationsInfo extends AppCompatActivity {
                     if(st.name==clicked_station_name){new_default_station = st;}
                 }
                 if(default_station==null){
-                    Log.d("info", "wchodzi 1");
                     new_default_station.is_default_station = true;
                     new SetStationAsDefault(activity, new_default_station, null).execute();
                 }
                 else {
-                    Log.d("info", "wchodzi 2");
                     new_default_station.is_default_station = true;
                     default_station.is_default_station = false;
                     new SetStationAsDefault(activity, new_default_station, default_station).execute();
@@ -128,9 +126,7 @@ public class ActivityStationsInfo extends AppCompatActivity {
             }
 
         });
-
     }
-
     public List<Station> GetStationsFromDatabase() {
         List<Station> stations = null;
         try {
@@ -152,18 +148,14 @@ public class ActivityStationsInfo extends AppCompatActivity {
                 mIdMap.put(names.get(i), i);
             }
         }
-
         @Override
         public long getItemId(int position) {
             String item = getItem(position);
             return mIdMap.get(item);
         }
-
         @Override
         public boolean hasStableIds() {
             return true;
         }
-
     }
-
 }

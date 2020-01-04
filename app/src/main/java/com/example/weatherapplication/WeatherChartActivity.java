@@ -21,6 +21,12 @@ import java.util.ArrayList;
 public class WeatherChartActivity extends AppCompatActivity {
 
     @Override
+    public boolean onSupportNavigateUp(){
+        onBackPressed();
+        return true;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         double array[];
         Bundle bundle = getIntent().getExtras();
@@ -38,20 +44,12 @@ public class WeatherChartActivity extends AppCompatActivity {
             values.add(new Entry(i, (float) array[i]));
         }
 
-        LineDataSet dataSet = new LineDataSet(values, "Customized values");
+        LineDataSet dataSet = new LineDataSet(values, param);
 
         LineData data = new LineData(dataSet);
         chart.setData(data);
         chart.animateX(2500);
         //refresh
         chart.invalidate();
-
-
-//        LineDataSet linedataset = new LineDataSet(values, param);
-//        chart.animateY(2000);
-//        LineChart data = new LineChart(year);
-//        LineData data = new LineData(dataSets);
-//        bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
-//        chart.setData(data);
     }
 }

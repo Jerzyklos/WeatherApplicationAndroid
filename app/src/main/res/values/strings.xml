@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">MChE Dane Pogodowe</string>
     <string name="button_info">Aktualne\ndane pogodowe</string>
-    <string name="button_weather_charts">Wykresy pogodowe\nTrend pogodowy</string>
+    <string name="button_weather_charts">Wykresy\npogodowe</string>
     <string name="button_settings">Ustawienia</string>
     <string name="button_application_info">O aplikacji</string>
     <string name="weather_data_time">Data i godzina</string>

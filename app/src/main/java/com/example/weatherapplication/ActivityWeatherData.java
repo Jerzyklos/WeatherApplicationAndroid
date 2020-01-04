@@ -105,7 +105,7 @@ public class ActivityWeatherData extends AppCompatActivity {
                 {
                     WeatherData weather_data_to_insert = null;
                     try {
-                        weather_data_to_insert = new GetWeatherDataFromURLRequest(activity, default_station.id).execute().get();
+                        weather_data_to_insert = new GetWeatherDataFromURLRequest(default_station.id).execute().get();
                     } catch (ExecutionException e) {
                         Log.d("info", "Execution exception");
                     } catch (InterruptedException e) {

@@ -44,8 +44,6 @@ public class ActivityPrepareChart extends AppCompatActivity {
         station_id="s000";
         data = null;
         activity = this;
-        bundle = new Bundle();
-        intent = new Intent(this, WeatherChartActivity.class);
 
         progress_dialog= new ProgressDialog(this);
         progress_dialog.setMessage("Pobieram dane. To może chwilę potrwać...");
@@ -58,7 +56,6 @@ public class ActivityPrepareChart extends AppCompatActivity {
 
     public String TodayToString(){
         String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-        Log.d("today date", date);
         return date;
     }
 
@@ -135,7 +132,7 @@ public class ActivityPrepareChart extends AppCompatActivity {
                 public void run()
                 {
                     try {
-                        data =  new GetWeatherDataForChartFromURLRequest(activity, station_id, param, date).execute().get();
+                        data =  new GetWeatherDataForChartFromURLRequest(station_id, param, date).execute().get();
                     } catch (ExecutionException e) {
                         Log.d("info", "Execution exception");
                     } catch (InterruptedException e) {
@@ -143,22 +140,26 @@ public class ActivityPrepareChart extends AppCompatActivity {
                     }
                     runOnUiThread(new Runnable() {
                         @Override
-                        public void run()
-                        {
-                            double array[]=new double[data.size()];
-                            for(int i=0; i<data.size(); i++){
-                                array[i] = data.get(i);
+                        public void run() {
+                            if (data.size() != 0) {
+                                double array[] = new double[data.size()];
+                                for (int i = 0; i < data.size(); i++){array[i] = data.get(i);}
+                                bundle = new Bundle();
+                                intent = new Intent(activity, WeatherChartActivity.class);
+                                bundle.putDoubleArray("data", array);
+                                bundle.putString("parameter", param);
+                                DismissProgressDialog();
+                                intent.putExtras(bundle);
+                                ActivityPrepareChart.this.startActivity(intent);
                             }
-                            bundle.putDoubleArray("data", array);
-                            bundle.putString("parameter", param);
-                            DismissProgressDialog();
-                            intent.putExtras(bundle);
-                            ActivityPrepareChart.this.startActivity(intent);
+                            else{
+                                Toast.makeText(activity.getApplicationContext(), "Brak danych.", Toast.LENGTH_SHORT).show();
+                                DismissProgressDialog();
+                            }
                         }
                     });
                 }
             }).start();
-
         }
         else Toast.makeText(this.getApplicationContext(), "Nie wybrano parametru do wyświetlenia.", Toast.LENGTH_SHORT).show();
     }
