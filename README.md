@@ -1,4 +1,3 @@
 # WeatherApplicationAndroid
-Android application showing weather data.
+Android application showing weather data, written in Java.
 
-There will be a proper README in a future
